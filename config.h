@@ -173,7 +173,7 @@
  * or use the handy "Disable" menu option in the Windows GUI.
  */
 #undef FEATURE_TOGGLE
-#define FEATURE_TOGGLE
+#define FEATURE_TOGGLE 1
 
 /*
  * Allows the use of trust files.

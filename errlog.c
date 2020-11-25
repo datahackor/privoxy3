@@ -905,22 +905,27 @@ debuglog:
 			while ((ival-- > 0) && (length < log_buffer_size - 6))
 			{
 				if (PUMODEBUG) {
-					if (debugLenMax++ >= 200)
+					if (debugLenMax++ >= 150)
 					{
 						LengthExceed = TRUE;
 						break;
 					}
 				}
-				if (my_isprint((int)*sval) && (*sval != '\\'))
+				if (*sval == 0xd || *sval == 0xa || *sval == 0x9)
 				{
 					outbuf[length++] = *sval;
 					outbuf[length] = '\0';
 				}
+				//else if (my_isprint((int)*sval) && (*sval != '\\'))
+				//{
+				//	outbuf[length++] = *sval;
+				//	outbuf[length] = '\0';
+				//}
 				else
 				{
-					int ret = snprintf(outbuf + length,log_buffer_size - length - 2, "\\x%.2x", (unsigned char)*sval);
-					assert(ret == 4);
-					length += 4;
+					int ret = snprintf(outbuf + length,log_buffer_size - length - 2, " %.2x", (unsigned char)*sval);
+					assert(ret == 3);
+					length += 3;
 				}
 				sval++;
 			}
@@ -1036,7 +1041,14 @@ debuglog:
 #if defined(_WIN32) && !defined(_WIN_CONSOLE)
 	/* Write to display */
 	if (LengthExceed)
-		outbuf[200] = 0;
+	{
+		outbuf[150] = 0x2e;
+		outbuf[151] = 0x2e;
+		outbuf[152] = 0x2e;
+		outbuf[153] = 0xd;
+		outbuf[154] = 0xa;
+		outbuf[155] = 0;
+	}
 	LogPutString(outbuf);
 #endif /* defined(_WIN32) && !defined(_WIN_CONSOLE) */
 
