@@ -1,0 +1,64 @@
+﻿  actions.c
+D:\Projects0\privoxy\src\loaders.h(71,1): warning C4005: 'NEWLINE': macro redefinition
+D:\Projects0\privoxy\src\config.h(266): message : see previous definition of 'NEWLINE'
+  cgi.c
+  cgiedit.c
+D:\Projects0\privoxy\src\loaders.h(71,1): warning C4005: 'NEWLINE': macro redefinition
+D:\Projects0\privoxy\src\config.h(266): message : see previous definition of 'NEWLINE'
+  cgisimple.c
+  client-tags.c
+  deanimate.c
+  encode.c
+  errlog.c
+  filters.c
+D:\Projects0\privoxy\src\loaders.h(71,1): warning C4005: 'NEWLINE': macro redefinition
+D:\Projects0\privoxy\src\config.h(266): message : see previous definition of 'NEWLINE'
+  fuzz.c
+D:\Projects0\privoxy\src\loaders.h(71,1): warning C4005: 'NEWLINE': macro redefinition
+D:\Projects0\privoxy\src\config.h(266): message : see previous definition of 'NEWLINE'
+  gateway.c
+D:\Projects0\privoxy\src\gateway.c(1162,76): warning C4244: 'function': conversion from 'unsigned __int64' to 'size_t', possible loss of data
+  jbsockets.c
+D:\Projects0\privoxy\src\jbsockets.c(141,52): warning C4133: 'function': incompatible types - from 'int *' to 'const char *'
+D:\Projects0\privoxy\src\jbsockets.c(1369,34): warning C4018: '<': signed/unsigned mismatch
+D:\Projects0\privoxy\src\jbsockets.c(1442,70): warning C4133: 'function': incompatible types - from 'linger *' to 'const char *'
+D:\Projects0\privoxy\src\jbsockets.c(1496,43): warning C4018: '<=': signed/unsigned mismatch
+  jcc.c
+D:\Projects0\privoxy\src\loaders.h(71,1): warning C4005: 'NEWLINE': macro redefinition
+D:\Projects0\privoxy\src\config.h(266): message : see previous definition of 'NEWLINE'
+D:\Projects0\privoxy\src\jcc.c(2252,10): warning C4018: '<=': signed/unsigned mismatch
+D:\Projects0\privoxy\src\jcc.c(2393,10): warning C4018: '<=': signed/unsigned mismatch
+D:\Projects0\privoxy\src\jcc.c(4456,29): warning C4018: '>=': signed/unsigned mismatch
+  list.c
+D:\Projects0\privoxy\src\list.c(539,10): warning C4018: '<': signed/unsigned mismatch
+  loadcfg.c
+D:\Projects0\privoxy\src\loaders.h(71,1): warning C4005: 'NEWLINE': macro redefinition
+D:\Projects0\privoxy\src\config.h(266): message : see previous definition of 'NEWLINE'
+  loaders.c
+D:\Projects0\privoxy\src\loaders.h(71,1): warning C4005: 'NEWLINE': macro redefinition
+D:\Projects0\privoxy\src\config.h(266): message : see previous definition of 'NEWLINE'
+  miscutil.c
+  parsers.c
+  pcrs.c
+  ssplit.c
+D:\Projects0\privoxy\src\ssplit.c(117,21): warning C4018: '>=': signed/unsigned mismatch
+D:\Projects0\privoxy\src\ssplit.c(140,27): warning C4018: '>=': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  urlmatch.c
+  w32log.c
+  w32svrapi.c
+  w32taskbar.c
+  win32.c
+  Generating Code...
+pcred.lib(pcre_chartables.obj) : warning LNK4099: PDB 'pcre.pdb' was not found with 'pcred.lib(pcre_chartables.obj)' or at 'D:\Projects0\privoxy\bin\pcre.pdb'; linking object as if no debug info
+pcred.lib(pcre_compile.obj) : warning LNK4099: PDB 'pcre.pdb' was not found with 'pcred.lib(pcre_compile.obj)' or at 'D:\Projects0\privoxy\bin\pcre.pdb'; linking object as if no debug info
+pcred.lib(pcre_exec.obj) : warning LNK4099: PDB 'pcre.pdb' was not found with 'pcred.lib(pcre_exec.obj)' or at 'D:\Projects0\privoxy\bin\pcre.pdb'; linking object as if no debug info
+pcred.lib(pcre_fullinfo.obj) : warning LNK4099: PDB 'pcre.pdb' was not found with 'pcred.lib(pcre_fullinfo.obj)' or at 'D:\Projects0\privoxy\bin\pcre.pdb'; linking object as if no debug info
+pcred.lib(pcre_globals.obj) : warning LNK4099: PDB 'pcre.pdb' was not found with 'pcred.lib(pcre_globals.obj)' or at 'D:\Projects0\privoxy\bin\pcre.pdb'; linking object as if no debug info
+pcred.lib(pcre_newline.obj) : warning LNK4099: PDB 'pcre.pdb' was not found with 'pcred.lib(pcre_newline.obj)' or at 'D:\Projects0\privoxy\bin\pcre.pdb'; linking object as if no debug info
+pcred.lib(pcre_study.obj) : warning LNK4099: PDB 'pcre.pdb' was not found with 'pcred.lib(pcre_study.obj)' or at 'D:\Projects0\privoxy\bin\pcre.pdb'; linking object as if no debug info
+pcred.lib(pcre_tables.obj) : warning LNK4099: PDB 'pcre.pdb' was not found with 'pcred.lib(pcre_tables.obj)' or at 'D:\Projects0\privoxy\bin\pcre.pdb'; linking object as if no debug info
+pcred.lib(pcre_ucd.obj) : warning LNK4099: PDB 'pcre.pdb' was not found with 'pcred.lib(pcre_ucd.obj)' or at 'D:\Projects0\privoxy\bin\pcre.pdb'; linking object as if no debug info
+pcreposixd.lib(pcreposix.obj) : warning LNK4099: PDB 'pcreposix.pdb' was not found with 'pcreposixd.lib(pcreposix.obj)' or at 'D:\Projects0\privoxy\bin\pcreposix.pdb'; linking object as if no debug info
+  privoxy3.vcxproj -> D:\Projects0\privoxy\src\..\bin\privoxy3.exe
