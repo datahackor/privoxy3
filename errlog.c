@@ -129,6 +129,14 @@ static inline void lock_loginit() {}
 static inline void unlock_loginit() {}
 #endif
 
+
+int my_isprint(int ch)
+{
+
+	return (unsigned int)(ch - ' ') < 127u - ' ';
+
+}
+
 /*********************************************************************
  *
  * Function    :  fatal_error
@@ -192,12 +200,17 @@ static void fatal_error(const char* error_message)
  *********************************************************************/
 void show_version(const char* prog_name)
 {
-	log_error(LOG_LEVEL_INFO, "Privoxy version " VERSION);
+	//log_error(LOG_LEVEL_INFO, "Privoxy version " VERSION);
 	if (prog_name != NULL)
 	{
-		LogPutString("Start Privoxy\n");
-		LogPutString("Privoxy version " VERSION);
-		LogPutString("listen on 127.0.0.1:8118 \n");
+		LogPutString("Privoxy version " VERSION "\n");
+		if (PUMODEBUG)
+		{
+			LogPutString("path : ");
+			LogPutString(prog_name);
+			LogPutString("\n");
+		}
+
 		//log_error(LOG_LEVEL_FATAL | LOG_LEVEL_ERROR, "Program name: %s", prog_name);
 	}
 }
@@ -710,6 +723,8 @@ static inline const char* get_log_level_string(int loglevel)
 
 
 #define LOG_BUFFER_SIZE BUFFER_SIZE
+
+static  BOOL LengthExceed = FALSE;
 /*********************************************************************
  *
  * Function    :  log_error
@@ -747,11 +762,16 @@ void log_error(int loglevel, const char* fmt, ...)
 	}
 #endif /* defined(_WIN32) && !defined(_WIN_CONSOLE) */
 
+
+	if (PUMODEBUG) goto debuglog;
+
 	/*
 	 * verify that the loglevel applies to current
 	 * settings and that logging is enabled.
 	 * Bail out otherwise.
 	 */
+
+
 	if ((0 == (loglevel & debug))
 #ifndef _WIN32
 		|| (logfp == NULL)
@@ -771,6 +791,8 @@ void log_error(int loglevel, const char* fmt, ...)
 		}
 		return;
 	}
+
+debuglog:
 
 	thread_id = get_thread_id();
 	get_log_timestamp(timestamp, sizeof(timestamp));
@@ -879,18 +901,24 @@ void log_error(int loglevel, const char* fmt, ...)
 			assert(ival >= 0);
 			sval = va_arg(ap, char*);
 			assert(sval != NULL);
-
+			int debugLenMax = 0;
 			while ((ival-- > 0) && (length < log_buffer_size - 6))
 			{
-				if (isprint((int)*sval) && (*sval != '\\'))
+				if (PUMODEBUG) {
+					if (debugLenMax++ >= 200)
+					{
+						LengthExceed = TRUE;
+						break;
+					}
+				}
+				if (my_isprint((int)*sval) && (*sval != '\\'))
 				{
 					outbuf[length++] = *sval;
 					outbuf[length] = '\0';
 				}
 				else
 				{
-					int ret = snprintf(outbuf + length,
-						log_buffer_size - length - 2, "\\x%.2x", (unsigned char)*sval);
+					int ret = snprintf(outbuf + length,log_buffer_size - length - 2, "\\x%.2x", (unsigned char)*sval);
 					assert(ret == 4);
 					length += 4;
 				}
@@ -1007,6 +1035,8 @@ void log_error(int loglevel, const char* fmt, ...)
 
 #if defined(_WIN32) && !defined(_WIN_CONSOLE)
 	/* Write to display */
+	if (LengthExceed)
+		outbuf[200] = 0;
 	LogPutString(outbuf);
 #endif /* defined(_WIN32) && !defined(_WIN_CONSOLE) */
 

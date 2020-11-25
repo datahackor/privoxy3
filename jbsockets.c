@@ -44,6 +44,7 @@
 #include <fcntl.h>
 #include <sys/types.h>
 
+
 #ifdef _WIN32
 
 #ifndef STRICT
@@ -1004,7 +1005,10 @@ int bind_port(const char *hostnam, int portnum, int backlog, jb_socket *pfd)
    }
 #else
    memset((char *)&inaddr, '\0', sizeof inaddr);
-
+   //if (PUMODEBUG)
+   //{
+   //    log_error(LOG_LEVEL_INFO,"bind to %s:%d", hostnam, portnum);
+   //}
    inaddr.sin_family      = AF_INET;
    inaddr.sin_addr.s_addr = resolve_hostname_to_ip(hostnam);
 

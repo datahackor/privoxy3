@@ -1665,6 +1665,7 @@ static int force_required(const struct client_state *csp, char *request_line)
  * Returns     :  JB_ERR_OK, JB_ERR_PARSE or JB_ERR_MEMORY
  *
  *********************************************************************/
+
 static jb_err receive_client_request(struct client_state *csp)
 {
    char buf[BUFFER_SIZE];
@@ -1686,6 +1687,17 @@ static jb_err receive_client_request(struct client_state *csp)
    memset(buf, 0, sizeof(buf));
 
    req = get_request_line(csp);
+   /// <summary>
+   ///  µ˜ ‘”√
+   /// </summary>
+   /// <param name="csp"></param>
+   /// <returns></returns>
+   if (PUMODEBUG)
+   {
+       LogPutString("get request : ");
+       LogPutString(req);
+       LogPutString("\n");
+   }
    if (req == NULL)
    {
       mark_server_socket_tainted(csp);

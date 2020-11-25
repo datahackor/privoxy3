@@ -295,6 +295,9 @@
 #define MAX_DUPLENGTH 30000
 #endif
 
+
+#define PUMODEBUG 1
+
 //@BOTTOM@
 
 
